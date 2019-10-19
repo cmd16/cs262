@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Homework 2</string>
+    <string name="enter_url_label_str">Enter URL:</string>
+    <string name="url_hint">www.example.com</string>
+    <string name="button_label">Get page source</string>
+    <string name="page_source_hint">Page source will appear here</string>
+    <string name="loading">Loading page source…</string>
+    <string name="no_search_term">Please enter a url to search.</string>
+    <string name="no_network">Please check your network connection and try again.</string>
+    <string name="no_result">Failed to get source code.</string>
+    <string-array name="protocol_array">
+        <item>http://</item>
+        <item>https://</item>
+    </string-array>
+</resources>
