@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--idea from https://stackoverflow.com/questions/14962036/put-blackline-border-around-scrollview-android-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid
+        android:color="@android:color/transparent"/>
+    <stroke
+        android:width="2dp"
+        android:color="#000000"/>
+</shape>
