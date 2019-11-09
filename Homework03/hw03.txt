@@ -1,0 +1,7 @@
+Is the service RESTful? If not, why not? If so, what key features make it RESTful.
+
+Yes, the service is RESTful. Key features of REST api: client-server (UI separate from server components), stateless, cacheable, uniform interface, and a layered system. The app does not rely on context (i.e., it is stateless).
+
+What endpoints implement actions that are idempotent? nullipotent?
+
+In homework 2, you are getting data. You never modify data, so maybe that's nullipotent since the data doesn't change, but maybe it's idempotent because you do get a result? In homework 3, adding a record (e.g., a player) is idempotent - adding the same record many times is equivalent to adding it many times. Maybe reading the player table is nullipotent? I'm not sure what reads count as.
