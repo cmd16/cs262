@@ -2,9 +2,13 @@ package edu.calvin.cs262.cmd38;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,19 +18,15 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int NEW_PLAYER_ACTIVITY_REQUEST_CODE = 1;
     private PlayerViewModel mPlayerViewModel;
     private MonopolyRoomDatabase mMonopolyRoomDatabase;
-    public static final int NEW_PLAYER_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                     @Override
-                    public boolean onMove(RecyclerView recyclerView,
-                                          RecyclerView.ViewHolder viewHolder,
-                                          RecyclerView.ViewHolder target) {
+                    public boolean onMove(@NonNull RecyclerView recyclerView,
+                                          @NonNull RecyclerView.ViewHolder viewHolder,
+                                          @NonNull RecyclerView.ViewHolder target) {
                         return false;
                     }
 
                     @Override
-                    public void onSwiped(RecyclerView.ViewHolder viewHolder,
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
                                          int direction) {
                         int position = viewHolder.getAdapterPosition();
                         Player myPlayer = adapter.getPlayerAtPosition(position);
@@ -94,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 if (players != null) {
                     for (int i = 0; i < players.size(); i++) {
                         Log.d("Player.id", Integer.toString(players.get(i).getId()));
-                        Log.d("Player.name", players.get(i).getName());
+                        if (players.get(i).getName() != null) {
+                            Log.d("Player.name", players.get(i).getName());
+                        }
                         Log.d("Player.emailAddress", players.get(i).getEmail());
                     }
                 }

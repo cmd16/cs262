@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 public class Game {
 
     // Help for autogen from https://stackoverflow.com/questions/44109700/how-to-make-primary-key-as-autoincrement-for-room-persistence-lib
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int mId;
 
@@ -20,6 +20,11 @@ public class Game {
         this.mTime = time;
     }
 
-    public int getId(){return this.mId;}
-    public String getTime(){return this.mTime;}
+    public int getId() {
+        return this.mId;
+    }
+
+    public String getTime() {
+        return this.mTime;
+    }
 }

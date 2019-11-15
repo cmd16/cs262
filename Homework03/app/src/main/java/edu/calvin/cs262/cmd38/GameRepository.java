@@ -21,8 +21,16 @@ public class GameRepository {
         return mAllGames;
     }
 
-    public void insert (Game game) {
+    public void insert(Game game) {
         new insertAsyncTask(mGameDao).execute(game);
+    }
+
+    public void deleteAll() {
+        new deleteAllGamesAsyncTask(mGameDao).execute();
+    }
+
+    public void deleteGame(Game game) {
+        new deleteGameAsyncTask(mGameDao).execute(game);
     }
 
     private static class insertAsyncTask extends AsyncTask<Game, Void, Void> {
@@ -54,10 +62,6 @@ public class GameRepository {
         }
     }
 
-    public void deleteAll() {
-        new deleteAllGamesAsyncTask(mGameDao).execute();
-    }
-
     private static class deleteGameAsyncTask extends AsyncTask<Game, Void, Void> {
         private GameDao mAsyncTaskDao;
 
@@ -70,9 +74,5 @@ public class GameRepository {
             mAsyncTaskDao.deleteGame(params[0]);
             return null;
         }
-    }
-
-    public void deleteGame(Game game) {
-        new deleteGameAsyncTask(mGameDao).execute(game);
     }
 }

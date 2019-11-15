@@ -18,11 +18,19 @@ public class PlayerViewModel extends AndroidViewModel {
         mAllPlayers = mRepository.getAllPlayers();
     }
 
-    LiveData<List<Player>> getAllPlayers() { return mAllPlayers; }
+    LiveData<List<Player>> getAllPlayers() {
+        return mAllPlayers;
+    }
 
-    public void insert(Player player) { mRepository.insert(player); }
+    public void insert(Player player) {
+        mRepository.insert(player);
+    }
 
-    public void deleteAll() { mRepository.deleteAll(); }
+    public void deleteAll() {
+        mRepository.deleteAll();
+    }
 
-    public void deletePlayer(Player player) { mRepository.deletePlayer(player); }
+    public void deletePlayer(Player player) {
+        mRepository.deletePlayer(player);
+    }
 }

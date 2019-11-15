@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,16 +16,19 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
     private final LayoutInflater mInflater;
     private List<Player> mPlayers;  // Cached copy of players
 
-    PlayerListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    PlayerListAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+    }
 
+    @NonNull
     @Override
-    public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PlayerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
         return new PlayerViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(PlayerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PlayerViewHolder holder, int position) {
         if (mPlayers != null) {
             Player current = mPlayers.get(position);
             String player_str = current.getName() + "\n" + current.getEmail();
@@ -49,6 +53,10 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
         else return 0;
     }
 
+    public Player getPlayerAtPosition(int position) {
+        return mPlayers.get(position);
+    }
+
     class PlayerViewHolder extends RecyclerView.ViewHolder {
         private final TextView playerItemView;
 
@@ -56,9 +64,5 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
             super(itemView);
             playerItemView = itemView.findViewById(R.id.textView);
         }
-    }
-
-    public Player getPlayerAtPosition(int position) {
-        return mPlayers.get(position);
     }
 }

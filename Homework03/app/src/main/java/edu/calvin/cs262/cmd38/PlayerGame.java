@@ -9,13 +9,13 @@ import androidx.room.PrimaryKey;
 public class PlayerGame {
 
     // Help for autogen from https://stackoverflow.com/questions/44109700/how-to-make-primary-key-as-autoincrement-for-room-persistence-lib
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int mId;
 
     @ForeignKey(entity = Game.class, parentColumns = "id", childColumns = "GameID")
     private int mGameID;
-    @ForeignKey(entity = Player.class, parentColumns = "id", childColumns = "PameID")
+    @ForeignKey(entity = Player.class, parentColumns = "id", childColumns = "GameID")
     private int mPlayerID;
 
     @ColumnInfo(name = "score")
@@ -28,8 +28,19 @@ public class PlayerGame {
         this.mScore = score;
     }
 
-    public int getId(){return this.mId;}
-    public int getGameID(){return this.mGameID;}
-    public int getPlayerID(){return this.mPlayerID;}
-    public int getScore(){return this.mScore;}
+    public int getId() {
+        return this.mId;
+    }
+
+    public int getGameID() {
+        return this.mGameID;
+    }
+
+    public int getPlayerID() {
+        return this.mPlayerID;
+    }
+
+    public int getScore() {
+        return this.mScore;
+    }
 }

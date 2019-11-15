@@ -12,10 +12,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 @Database(entities = {Player.class, Game.class, PlayerGame.class}, version = 1, exportSchema = false)
 public abstract class MonopolyRoomDatabase extends RoomDatabase {
 
-    public abstract PlayerDao playerDao();
-    public abstract GameDao gameDao();
-    public abstract PlayerGameDao playerGameDao();
     private static MonopolyRoomDatabase INSTANCE;
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            super.onOpen(db);
+            new PopulateDbAsync(INSTANCE).execute();
+        }
+    };
 
     public static MonopolyRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -34,13 +38,11 @@ public abstract class MonopolyRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-        @Override
-        public void onOpen (@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
-            new PopulateDbAsync(INSTANCE).execute();
-        }
-    };
+    public abstract PlayerDao playerDao();
+
+    public abstract GameDao gameDao();
+
+    public abstract PlayerGameDao playerGameDao();
 
     /**
      * Populate the database in the background

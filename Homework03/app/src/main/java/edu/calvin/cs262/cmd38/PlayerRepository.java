@@ -21,8 +21,16 @@ public class PlayerRepository {
         return mAllPlayers;
     }
 
-    public void insert (Player player) {
+    public void insert(Player player) {
         new insertAsyncTask(mPlayerDao).execute(player);
+    }
+
+    public void deleteAll() {
+        new deleteAllPlayersAsyncTask(mPlayerDao).execute();
+    }
+
+    public void deletePlayer(Player player) {
+        new deletePlayerAsyncTask(mPlayerDao).execute(player);
     }
 
     private static class insertAsyncTask extends AsyncTask<Player, Void, Void> {
@@ -54,10 +62,6 @@ public class PlayerRepository {
         }
     }
 
-    public void deleteAll() {
-        new deleteAllPlayersAsyncTask(mPlayerDao).execute();
-    }
-
     private static class deletePlayerAsyncTask extends AsyncTask<Player, Void, Void> {
         private PlayerDao mAsyncTaskDao;
 
@@ -70,9 +74,5 @@ public class PlayerRepository {
             mAsyncTaskDao.deletePlayer(params[0]);
             return null;
         }
-    }
-
-    public void deletePlayer(Player player) {
-        new deletePlayerAsyncTask(mPlayerDao).execute(player);
     }
 }

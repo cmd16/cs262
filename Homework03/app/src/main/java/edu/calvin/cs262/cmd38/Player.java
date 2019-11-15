@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 public class Player {
 
     // Help for autogen from https://stackoverflow.com/questions/44109700/how-to-make-primary-key-as-autoincrement-for-room-persistence-lib
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int mId;
 
@@ -28,7 +28,15 @@ public class Player {
         this.mEmail = email;
     }
 
-    public int getId(){return this.mId;}
-    public String getEmail(){return this.mEmail;}
-    public String getName(){return this.mName;}
+    public int getId() {
+        return this.mId;
+    }
+
+    public String getEmail() {
+        return this.mEmail;
+    }
+
+    public String getName() {
+        return this.mName;
+    }
 }
