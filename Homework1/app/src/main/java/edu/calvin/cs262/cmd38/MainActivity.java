@@ -13,9 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    public int operand1 = 0;
-    public int operand2 = 0;
-    public String my_operator;
+    private int operand1 = 0;
+    private int operand2 = 0;
+    private String my_operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
