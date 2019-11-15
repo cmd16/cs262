@@ -29,7 +29,8 @@
         android:inputType="textUri"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/protocolSpinner"
-        app:layout_constraintTop_toTopOf="@+id/protocolSpinner" />
+        app:layout_constraintTop_toTopOf="@+id/protocolSpinner"
+        android:importantForAutofill="no" />
 
     <Spinner
         android:id="@+id/protocolSpinner"

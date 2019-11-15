@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
 
-public class UrlLoader extends AsyncTaskLoader<String> {
-    private String mQueryString;
+class UrlLoader extends AsyncTaskLoader<String> {
+    private final String mQueryString;
 
     public UrlLoader(@NonNull Context context, String queryString) {
         super(context);

@@ -28,7 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
-public class NetworkUtils {
+class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
     /**
